@@ -1,6 +1,7 @@
 package pokespring.pokespringserver.controller;
 
 import org.bson.types.ObjectId;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +31,14 @@ public class PokemonController {
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void modifyPokemonById(@PathVariable("id") ObjectId id, @Valid @RequestBody Pokemon pokemon) {
+    public void modifyPokemonById(@PathVariable("id") String id, @Valid @RequestBody Pokemon pokemon) {
         pokemon.setId(id);
         repository.save(pokemon);
     }
 
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public Pokemon createPokemon(@Valid @RequestBody Pokemon pokemon) {
-        pokemon.setId(ObjectId.get());
+        pokemon.setId(ObjectId.get().toString());
         repository.save(pokemon);
         return pokemon;
     }

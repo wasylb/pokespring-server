@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "pokemons")
 public class Pokemon {
     @Id
-    private ObjectId id;
+    private String id;
 
     private String name;
     private String type;
@@ -17,7 +17,7 @@ public class Pokemon {
     private int defense;
     private int speed;
 
-    public Pokemon(final ObjectId id, final String name, final String type, final String avatarUrl, final int hp, final int attack, final int defense, final int speed) {
+    public Pokemon(final String id, final String name, final String type, final String avatarUrl, final int hp, final int attack, final int defense, final int speed) {
         this.id = id;
         this.name = name;
         this.type = type;
@@ -29,6 +29,7 @@ public class Pokemon {
     }
 
     public Pokemon() {
+        this.id = "";
         this.name = "";
         this.type = "";
         this.avatarUrl = "";
@@ -38,11 +39,11 @@ public class Pokemon {
         this.speed = 0;
     }
 
-    public ObjectId getId() {
-        return this.id;
+    public String getId() {
+        return this.id.toString();
     }
 
-    public void setId(final ObjectId id) {
+    public void setId(final String id) {
         this.id = id;
     }
 
