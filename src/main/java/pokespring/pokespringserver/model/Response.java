@@ -1,6 +1,6 @@
 package pokespring.pokespringserver.model;
 
-public class Response extends IdContent {
+public class Response {
 
     private String id;
     private String content;
@@ -8,12 +8,14 @@ public class Response extends IdContent {
 
 
     public Response(String id, String content, String classRelated) {
-        super(id, content);
+        this.id = id;
+        this.content = content;
         this.classRelated = classRelated;
     }
 
     public Response() {
-        super();
+        this.id = "";
+        this.content = "";
         this.classRelated = "";
     }
 
